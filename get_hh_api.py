@@ -17,12 +17,16 @@ companies = {"sokolov": "1038532",
 
 
 def hh_api():
+    """Функция для подключения к api hh.ru"""
+    data_list = []
     for company in companies.values():
         response = requests.get(f"{URL}{company}", params=PARAMS)
         if response.status_code != 200:
-            print(f"Connection error with code {response.status_code}")
+            pprint(f"Connection error with code {response.status_code}")
         else:
-            return response.json()['items']
+            data_list.append(response.json()['items'])
+
+    return data_list
 
 
 hh_api()
