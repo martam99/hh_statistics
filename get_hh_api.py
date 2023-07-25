@@ -3,7 +3,7 @@ from pprint import pprint
 import json
 
 URL = "https://api.hh.ru/vacancies?employer_id="
-PARAMS = {"pages": 100, "per_page": 10, "only_with_vacancies": True}
+PARAMS = {"pages": 10, "per_page": 10, "only_with_vacancies": True}
 companies = {"sokolov": "1038532",
              "teremok": "27879",
              "labirint": "17488",
