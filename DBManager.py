@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import psycopg2
 from config import config
 
@@ -18,7 +20,7 @@ class DBManager:
         self.cursor.execute("""
         SELECT company_name , COUNT(*) AS vacancy_count FROM company
         LEFT JOIN vacancy USING(company_id)
-        GROUP BY company_id
+        GROUP BY company_name
         """)
         return self.cursor.fetchall()
 
@@ -55,6 +57,3 @@ class DBManager:
         """)
         return self.cursor.fetchall()
 
-
-m = DBManager()
-print(m.get_companies_and_vacancies_count())
