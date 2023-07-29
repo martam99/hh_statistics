@@ -13,6 +13,7 @@ class DBManager:
     """Класс для подключения к базе данных"""
 
     def __init__(self):
+        self.conn = conn
         self.cursor = cur
 
     def get_companies_and_vacancies_count(self):
@@ -55,5 +56,5 @@ class DBManager:
         SELECT * FROM vacancy 
         WHERE vacancy_name LIKE '%{user_input}%'
         """)
-        return self.cursor.fetchall()
+        return self.cursor.fetchall(), self.cursor.close(), self.conn.close()
 
